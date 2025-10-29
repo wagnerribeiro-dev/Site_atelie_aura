@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Requisitos SEO/Social -->
+    <title>ateliê aura | Moda Feminina - Estilo e Conforto em Edição Limitada</title>
+    <meta name="description" content="Mais que moda, sua aura em cada peça. Descubra a coleção de Edição Limitada do Ateliê Aura que une elegância e versatilidade.">
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Configuração de Cores e Fontes no Tailwind */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'fundo-aura': '#F6E8E4', /* Cor de fundo principal (rosé/bege claro) */
+                        'texto-escuro': '#1b1b1b',
+                        'detalhe-rosé': '#E0C8C3',
+                    },
+                    fontFamily: {
+                        'display': ['"Playfair Display"', 'serif'],
+                        'sans': ['Inter', 'Roboto', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'aura': '0 4px 15px rgba(246, 232, 228, 0.7)', /* Sombra suave para botões */
+                    }
+                }
+            }
+        }
+        /* Estilos Customizados */
+        body {
+            background-color: #F6E8E4;
+            color: #1b1b1b;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+        }
+        /* Efeito Parallax no Hero (Simulado) */
+        .parallax-bg {
+            background-image: url('https://placehold.co/1440x900/E0C8C3/1b1b1b'); /* Placeholder de cor pura - TEXTO REMOVIDO */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 90vh; /* Altura da seção Hero */
+            transition: opacity 0.8s ease-out;
+        }
+        /* Estilo para Scroll Suave no Menu */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Estilo Glassmorphism para o menu fixo (opcional) */
+        .glass-nav {
+            backdrop-filter: blur(8px);
+            background-color: rgba(246, 232, 228, 0.85); /* 85% opacidade */
+            box-shadow: 0 4px 12px rgba(27, 27, 27, 0.08);
+        }
+        /* Classes para o Carrossel (overflow + scroll snap) */
+        .carousel-container {
+            scroll-snap-type: x mandatory;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .carousel-item {
+            scroll-snap-align: start;
+            flex-shrink: 0;
+            transition: transform 0.3s ease-in-out;
+        }
+        /* Lightbox - Esconde por padrão */
+        .lightbox-overlay {
+            display: none;
+            z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(27, 27, 27, 0.9);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body class="font-sans text-texto-escuro">
+
+    <!-- Ícone de Carregamento (Simulado) -->
+    <div id="loader" class="fixed inset-0 bg-fundo-aura flex items-center justify-center z-[9999] transition-opacity duration-500">
+        <svg class="animate-spin h-10 w-10 text-detalhe-rosé" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+    </div>
+
+    <!-- 🧭 Menu de Navegação (Fixo) -->
+    <header id="navbar" class="glass-nav fixed top-0 w-full z-50 transition-all duration-300">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo (Placeholder) -->
+            <a href="#hero" class="text-3xl font-display font-bold text-texto-escuro hover:text-detalhe-rosé transition-colors duration-300">
+                ateliê aura
+            </a>
+            <!-- Links de Navegação (Desktop) -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#sobre" class="nav-link text-lg font-medium hover:text-detalhe-rosé transition-colors duration-300">Sobre a Marca</a>
+                <a href="#colecao" class="nav-link text-lg font-medium hover:text-detalhe-rosé transition-colors duration-300">Coleção</a>
+                <a href="#galeria" class="nav-link text-lg font-medium hover:text-detalhe-rosé transition-colors duration-300">Galeria</a>
+                <a href="#faq" class="nav-link text-lg font-medium hover:text-detalhe-rosé transition-colors duration-300">FAQ</a>
+                <a href="#comprar" class="nav-link text-lg font-bold bg-detalhe-rosé px-4 py-2 rounded-lg hover:bg-texto-escuro hover:text-fundo-aura transition-all duration-300 shadow-lg">Comprar Agora</a>
+            </div>
+            <!-- Botão Mobile Menu -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-detalhe-rosé transition-colors duration-300" aria-label="Abrir menu de navegação">
+                <i data-lucide="menu" class="w-6 h-6 text-texto-escuro"></i>
+            </button>
+        </nav>
+        <!-- Menu Mobile (oculto) -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+            <a href="#sobre" class="nav-link block py-2 text-lg font-medium hover:text-detalhe-rosé transition-colors duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Sobre a Marca</a>
+            <a href="#colecao" class="nav-link block py-2 text-lg font-medium hover:text-detalhe-rosé transition-colors duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Coleção</a>
+            <a href="#galeria" class="nav-link block py-2 text-lg font-medium hover:text-detalhe-rosé transition-colors duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Galeria</a>
+            <a href="#faq" class="nav-link block py-2 text-lg font-medium hover:text-detalhe-rosé transition-colors duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">FAQ</a>
+            <a href="#comprar" class="nav-link block py-2 text-lg font-bold bg-detalhe-rosé px-4 rounded-lg hover:bg-texto-escuro hover:text-fundo-aura transition-all duration-300 mt-2 text-center" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Comprar Agora</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 🎯 Seção Principal (Hero) -->
+        <section id="hero">
+            <div class="p-8 md:p-12 bg-fundo-aura bg-opacity-80 rounded-xl shadow-2xl animate-fade-in transition-opacity duration-1000">
+                
+                <!-- LOGO EM DESTAQUE -->
+                <img src="logo_loja.jpg" alt="Logo Ateliê Aura" class="mx-auto mb-6 w-48 md:w-64 h-auto object-contain rounded-lg shadow-lg">
+
+                <!-- SLOGAN -->
+                <h1 class="font-display text-4xl md:text-6xl font-light italic mb-8 max-w-xl mx-auto text-texto-escuro">
+                    Mais que moda, <span class="font-bold text-detalhe-rosé">sua aura em cada peça.</span>
+                </h1>
+                
+                <a href="#comprar" class="cta-button inline-block bg-texto-escuro text-fundo-aura px-10 py-4 text-xl font-bold rounded-full transition-all duration-300 hover:scale-[1.02] hover:bg-detalhe-rosé hover:text-texto-escuro shadow-lg">
+                    Garanta a Sua
+                </a>
+            </div>
+        </section>
+
+        <!-- 💎 Seção Sobre a Marca -->
+        <section id="sobre" class="py-16 md:py-24 container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="animate-fade-in" style="animation-delay: 0.2s;">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 border-l-4 border-detalhe-rosé pl-4">
+                        A Essência do ateliê aura
+                    </h2>
+                    <p class="text-xl leading-relaxed mb-6">
+                        No ateliê aura, acreditamos que a moda deve ser uma extensão da sua energia e essência. Criamos peças que unem **conforto, elegância e versatilidade**, acompanhando você em todas as ocasiões.
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-600">
+                        Nossa filosofia é simples: design atemporal com tecidos de alta qualidade. Roupas feitas para mulheres independentes, que valorizam o estilo sem abrir mão da liberdade de movimento.
+                    </p>
+                    <a href="#" class="inline-block mt-6 text-detalhe-rosé font-semibold hover:text-texto-escuro transition-colors duration-300 group">
+                        Conheça nossa história
+                        <span class="inline-block ml-1 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+                    </a>
+                </div>
+                <!-- Imagem Complementar (Placeholder) -->
+                <div class="rounded-xl shadow-2xl overflow-hidden animate-fade-in" style="animation-delay: 0.4s;">
+                    <img src="card_promocao.jpg" alt="Bastidores e filosofia da marca Ateliê Aura" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.05]">
+                </div>
+            </div>
+        </section>
+
+        <!-- 👗 Seção Coleção (Carrossel 1 – Destaque Visual 1) -->
+        <section id="colecao" class="py-16 md:py-24 bg-detalhe-rosé/30">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-12">
+                    Coleção Primavera: Conforto em Movimento
+                </h2>
+            </div>
+            <!-- Carrossel 1 - Horizontal de Largura Total -->
+            <div id="carousel-1-container" class="relative">
+                <div id="carousel-1" class="carousel-container flex w-full overflow-hidden whitespace-nowrap">
+                    <!-- Item 1 -->
+                    <div class="carousel-item w-full md:w-1/2 lg:w-1/5 p-4 animate-fade-in" data-index="0">
+                        <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                            <img src="vestido_pink_frente.jpg" alt="Conforto em movimento" loading="lazy" class="w-full h-64 md:h-80 object-cover">
+                            <p class="text-center font-display text-xl py-3 border-t">Conforto em movimento</p>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="carousel-item w-full md:w-1/2 lg:w-1/5 p-4 animate-fade-in" data-index="1">
+                        <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                            <img src="vestido_preto_frente.jpg" alt="Detalhes que encantam" loading="lazy" class="w-full h-64 md:h-80 object-cover">
+                            <p class="text-center font-display text-xl py-3 border-t">Detalhes que encantam</p>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="carousel-item w-full md:w-1/2 lg:w-1/5 p-4 animate-fade-in" data-index="2">
+                        <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                            <img src="vestido_azul_frente.jpg" alt="Fluidez e Leveza" loading="lazy" class="w-full h-64 md:h-80 object-cover">
+                            <p class="text-center font-display text-xl py-3 border-t">Fluidez e Leveza</p>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="carousel-item w-full md:w-1/2 lg:w-1/5 p-4 animate-fade-in" data-index="3">
+                        <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                            <img src="vestido_preto_costa.jpg" alt="Estilo sem esforço" loading="lazy" class="w-full h-64 md:h-80 object-cover">
+                            <p class="text-center font-display text-xl py-3 border-t">Estilo sem esforço</p>
+                        </div>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="carousel-item w-full md:w-1/2 lg:w-1/5 p-4 animate-fade-in" data-index="4">
+                        <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                            <img src="vestido_pink_costa.jpg" alt="Toque de Elegância" loading="lazy" class="w-full h-64 md:h-80 object-cover">
+                            <p class="text-center font-display text-xl py-3 border-t">Toque de Elegância</p>
+                        </div>
+                    </div>
+                    <!-- Item 6 -->
+                    <div class="carousel-item w-full md:w-1/2 lg:w-1/5 p-4 animate-fade-in" data-index="5">
+                        <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                            <img src="vestido_azul_costa.jpg" alt="Versatilidade total" loading="lazy" class="w-full h-64 md:h-80 object-cover">
+                            <p class="text-center font-display text-xl py-3 border-t">Versatilidade total</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Botões de Navegação -->
+                <button id="prev-1" aria-label="Anterior" class="absolute top-1/2 left-4 transform -translate-y-1/2 p-3 bg-white/70 rounded-full shadow-lg hover:bg-detalhe-rosé/90 transition-all duration-300">
+                    <i data-lucide="chevron-left" class="w-6 h-6 text-texto-escuro"></i>
+                </button>
+                <button id="next-1" aria-label="Próximo" class="absolute top-1/2 right-4 transform -translate-y-1/2 p-3 bg-white/70 rounded-full shadow-lg hover:bg-detalhe-rosé/90 transition-all duration-300">
+                    <i data-lucide="chevron-right" class="w-6 h-6 text-texto-escuro"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- 🌞 Seção Exclusividade / Urgência -->
+        <section id="urgencia" class="py-20 md:py-32 bg-texto-escuro text-fundo-aura text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="font-display text-4xl md:text-6xl font-bold mb-4">
+                Coleção Outono & Inverno — <span class="text-detalhe-rosé italic">Edição Limitada</span>
+            </h2>
+            <p class="text-xl md:text-2xl mb-8 font-light max-w-2xl mx-auto">
+                Peças exclusivas com tecidos naturais e caimento perfeito. Não perca a oportunidade de vestir sua melhor versão.
+            </p>
+
+            <!-- Contador Visual (Simulado Estático) -->
+            <div class="flex justify-center items-center space-x-6 mb-12">
+                <div class="bg-detalhe-rosé text-texto-escuro p-4 rounded-xl font-bold text-3xl md:text-4xl shadow-2xl">
+                    <span id="days">07</span>
+                    <span class="block text-sm font-sans mt-1">Dias</span>
+                </div>
+                <div class="bg-detalhe-rosé text-texto-escuro p-4 rounded-xl font-bold text-3xl md:text-4xl shadow-2xl">
+                    <span id="hours">14</span>
+                    <span class="block text-sm font-sans mt-1">Horas</span>
+                </div>
+                <div class="bg-detalhe-rosé text-texto-escuro p-4 rounded-xl font-bold text-3xl md:text-4xl shadow-2xl">
+                    <span id="minutes">32</span>
+                    <span class="block text-sm font-sans mt-1">Mins</span>
+                </div>
+                <div class="bg-detalhe-rosé text-texto-escuro p-4 rounded-xl font-bold text-3xl md:text-4xl shadow-2xl">
+                    <span id="seconds">55</span>
+                    <span class="block text-sm font-sans mt-1">Segs</span>
+                </div>
+            </div>
+
+            <a href="#galeria" class="cta-button inline-block bg-fundo-aura text-texto-escuro px-10 py-4 text-xl font-bold rounded-full transition-all duration-300 hover:scale-[1.05] hover:bg-detalhe-rosé shadow-aura">
+                Descubra Agora &rarr;
+            </a>
+            <p class="mt-4 text-sm font-light text-detalhe-rosé">Últimas unidades disponíveis. Garanta a exclusividade!</p>
+        </section>
+
+        <!-- 🌸 Seção Galeria (Carrossel 2 – Destaque Visual 2) -->
+        <section id="galeria" class="py-16 md:py-24 bg-fundo-aura/80">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-12 border-b-2 border-detalhe-rosé pb-4">
+                    Galeria Aura: Looks e Combinações
+                </h2>
+            </div>
+            <!-- Carrossel 2 - Mosaico Dinâmico com Lightbox -->
+            <div id="carousel-2-container" class="relative">
+                <div id="carousel-2" class="carousel-container flex w-full overflow-hidden whitespace-nowrap">
+                    <!-- Configuração: 3 itens visíveis no desktop, 1 no mobile -->
+                    <!-- Item 1 -->
+                    <div class="carousel-item w-full md:w-1/4 p-2 group cursor-pointer" data-img-url="vestido_azul_costa.jpg">
+                        <div class="rounded-xl overflow-hidden shadow-lg transform transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-2xl">
+                            <img src="vestido_azul_lateral.jpg" alt="Look Aura Casual" loading="lazy" class="w-full h-96 object-cover zoom-transition">
+                            <p class="text-center font-sans text-lg py-2 bg-white">Look Aura Casual</p>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="carousel-item w-full md:w-1/4 p-2 group cursor-pointer" data-img-url="vestido_pink_costa.jpg">
+                        <div class="rounded-xl overflow-hidden shadow-lg transform transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-2xl">
+                            <img src="vestido_pink_lateral.jpg" alt="Elegância Natural" loading="lazy" class="w-full h-96 object-cover zoom-transition">
+                            <p class="text-center font-sans text-lg py-2 bg-white">Elegância Natural</p>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="carousel-item w-full md:w-1/4 p-2 group cursor-pointer" data-img-url="vestido_preto_costa.jpg">
+                        <div class="rounded-xl overflow-hidden shadow-lg transform transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-2xl">
+                            <img src="vestido_fente_mao_cintura.jpg" alt="Combinação Perfeita" loading="lazy" class="w-full h-96 object-cover zoom-transition">
+                            <p class="text-center font-sans text-lg py-2 bg-white">Combinação Perfeita</p>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="carousel-item w-full md:w-1/4 p-2 group cursor-pointer" data-img-url="https://placehold.co/1200x800/E5C6B7/1b1b1b?text=Look+Galeria+04">
+                        <div class="rounded-xl overflow-hidden shadow-lg transform transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-2xl">
+                            <img src="https://placehold.co/900x600/E5C6B7/1b1b1b?text=Look+Galeria+04" alt="Detalhes Sofisticados" loading="lazy" class="w-full h-96 object-cover zoom-transition">
+                            <p class="text-center font-sans text-lg py-2 bg-white">Detalhes Sofisticados</p>
+                        </div>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="carousel-item w-full md:w-1/4 p-2 group cursor-pointer" data-img-url="https://placehold.co/1200x800/F0E6D8/1b1b1b?text=Look+Galeria+05">
+                        <div class="rounded-xl overflow-hidden shadow-lg transform transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-2xl">
+                            <img src="https://placehold.co/900x600/F0E6D8/1b1b1b?text=Look+Galeria+05" alt="Peça Atemporal" loading="lazy" class="w-full h-96 object-cover zoom-transition">
+                            <p class="text-center font-sans text-lg py-2 bg-white">Peça Atemporal</p>
+                        </div>
+                    </div>
+                    <!-- Item 6 -->
+                    <div class="carousel-item w-full md:w-1/4 p-2 group cursor-pointer" data-img-url="https://placehold.co/1200x800/C9B8AD/1b1b1b?text=Look+Galeria+06">
+                        <div class="rounded-xl overflow-hidden shadow-lg transform transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-2xl">
+                            <img src="https://placehold.co/900x600/C9B8AD/1b1b1b?text=Look+Galeria+06" alt="Essência e Estilo" loading="lazy" class="w-full h-96 object-cover zoom-transition">
+                            <p class="text-center font-sans text-lg py-2 bg-white">Essência e Estilo</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Botões de Navegação -->
+                <button id="prev-2" aria-label="Anterior" class="absolute top-1/2 left-4 transform -translate-y-1/2 p-3 bg-white/70 rounded-full shadow-lg hover:bg-detalhe-rosé/90 transition-all duration-300">
+                    <i data-lucide="chevron-left" class="w-6 h-6 text-texto-escuro"></i>
+                </button>
+                <button id="next-2" aria-label="Próximo" class="absolute top-1/2 right-4 transform -translate-y-1/2 p-3 bg-white/70 rounded-full shadow-lg hover:bg-detalhe-rosé/90 transition-all duration-300">
+                    <i data-lucide="chevron-right" class="w-6 h-6 text-texto-escuro"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- 💬 FAQ -->
+        <section id="faq" class="py-16 md:py-24 container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-12">
+                Dúvidas Frequentes
+            </h2>
+            <div id="accordion-faq">
+                <!-- FAQ Item 1 -->
+                <div class="border-b border-detalhe-rosé/50 py-4">
+                    <button class="faq-button w-full flex justify-between items-center text-left font-semibold text-lg hover:text-detalhe-rosé transition-colors duration-300" aria-expanded="false" aria-controls="faq-content-1">
+                        Quais materiais são usados nas peças?
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-1" class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out text-gray-600 pt-2">
+                        <p class="pb-2">As peças são produzidas com tecidos leves e respiráveis, garantindo conforto e durabilidade. Priorizamos fibras naturais sempre que possível.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="border-b border-detalhe-rosé/50 py-4">
+                    <button class="faq-button w-full flex justify-between items-center text-left font-semibold text-lg hover:text-detalhe-rosé transition-colors duration-300" aria-expanded="false" aria-controls="faq-content-2">
+                        Como funciona o envio?
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-2" class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out text-gray-600 pt-2">
+                        <p class="pb-2">Entregamos em todo o Brasil com rastreio automático. Você receberá o código por e-mail após a confirmação do pagamento.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="border-b border-detalhe-rosé/50 py-4">
+                    <button class="faq-button w-full flex justify-between items-center text-left font-semibold text-lg hover:text-detalhe-rosé transition-colors duration-300" aria-expanded="false" aria-controls="faq-content-3">
+                        Quais formas de pagamento são aceitas?
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-3" class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out text-gray-600 pt-2">
+                        <p class="pb-2">Aceitamos Cartão de crédito (em até 6x sem juros), PIX e boleto bancário.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 4 -->
+                <div class="border-b border-detalhe-rosé/50 py-4">
+                    <button class="faq-button w-full flex justify-between items-center text-left font-semibold text-lg hover:text-detalhe-rosé transition-colors duration-300" aria-expanded="false" aria-controls="faq-content-4">
+                        Posso trocar ou devolver?
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-4" class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out text-gray-600 pt-2">
+                        <p class="pb-2">Sim, em até 7 dias após o recebimento, conforme a política de troca e devolução detalhada no rodapé da página.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 5 -->
+                <div class="border-b border-detalhe-rosé/50 py-4">
+                    <button class="faq-button w-full flex justify-between items-center text-left font-semibold text-lg hover:text-detalhe-rosé transition-colors duration-300" aria-expanded="false" aria-controls="faq-content-5">
+                        Como escolher o tamanho ideal?
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-5" class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out text-gray-600 pt-2">
+                        <p class="pb-2">Consulte nossa tabela de medidas completa, disponível na página de cada produto, para garantir o caimento perfeito.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🛍️ Seção “Comprar Agora” -->
+        <section id="comprar" class="py-16 md:py-24 bg-detalhe-rosé/30">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-12">
+                    Nossos Destaques da Coleção
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Produto 1 -->
+                    <div class="bg-white rounded-xl shadow-2xl p-4 transform transition-all duration-300 hover:scale-[1.03] hover:shadow-3xl animate-fade-in">
+                        <img src="https://placehold.co/600x600/F6E8E4/1b1b1b?text=Produto+1" alt="Vestido Versátil Rosé" loading="lazy" class="w-full h-80 object-cover rounded-lg mb-4">
+                        <h3 class="font-display text-2xl font-semibold mb-2">Vestido Versátil Rosé</h3>
+                        <p class="text-xl font-bold text-detalhe-rosé mb-3">R$ 299,90</p>
+                        <button class="w-full bg-texto-escuro text-fundo-aura py-3 rounded-full font-bold hover:bg-detalhe-rosé hover:text-texto-escuro transition-colors duration-300">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+
+                    <!-- Produto 2 (Mais Vendido) -->
+                    <div class="bg-white rounded-xl shadow-2xl p-4 transform transition-all duration-300 hover:scale-[1.03] hover:shadow-3xl relative animate-fade-in" style="animation-delay: 0.2s;">
+                        <span class="absolute top-6 right-6 bg-detalhe-rosé text-texto-escuro text-xs font-bold px-3 py-1 rounded-full uppercase shadow-lg">Mais Vendido</span>
+                        <img src="https://placehold.co/600x600/C9B8AD/1b1b1b?text=Produto+2" alt="Calça Pantalona Elegance" loading="lazy" class="w-full h-80 object-cover rounded-lg mb-4">
+                        <h3 class="font-display text-2xl font-semibold mb-2">Calça Pantalona Elegance</h3>
+                        <p class="text-xl font-bold text-detalhe-rosé mb-3">R$ 189,90</p>
+                        <button class="w-full bg-texto-escuro text-fundo-aura py-3 rounded-full font-bold hover:bg-detalhe-rosé hover:text-texto-escuro transition-colors duration-300">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+
+                    <!-- Produto 3 -->
+                    <div class="bg-white rounded-xl shadow-2xl p-4 transform transition-all duration-300 hover:scale-[1.03] hover:shadow-3xl animate-fade-in" style="animation-delay: 0.4s;">
+                        <img src="https://placehold.co/600x600/EEDDD8/1b1b1b?text=Produto+3" alt="Blusa Seda Conforto" loading="lazy" class="w-full h-80 object-cover rounded-lg mb-4">
+                        <h3 class="font-display text-2xl font-semibold mb-2">Blusa Seda Conforto</h3>
+                        <p class="text-xl font-bold text-detalhe-rosé mb-3">R$ 149,90</p>
+                        <button class="w-full bg-texto-escuro text-fundo-aura py-3 rounded-full font-bold hover:bg-detalhe-rosé hover:text-texto-escuro transition-colors duration-300">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Lightbox (Modal de Imagem) -->
+    <div id="lightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <button id="lightbox-close" aria-label="Fechar galeria de imagens" class="absolute top-6 right-8 text-fundo-aura text-4xl font-light hover:scale-110 transition-transform duration-200">
+            &times;
+        </button>
+        <img id="lightbox-img" src="" alt="Imagem ampliada da galeria" class="max-w-[90%] max-h-[90vh] rounded-xl shadow-2xl object-contain">
+    </div>
+
+    <!-- CTA Fixo Flutuante -->
+    <a href="#comprar" class="fixed bottom-6 right-6 z-40 cta-button p-4 rounded-full bg-detalhe-rosé text-texto-escuro font-bold shadow-2xl transition-all duration-300 hover:scale-[1.05] hover:bg-detalhe-rosé/90 flex items-center space-x-2 animate-bounce-slow">
+        <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+        <span class="hidden sm:inline">Garanta a Sua</span>
+    </a>
+
+    <!-- 🔗 Rodapé -->
+    <footer class="bg-texto-escuro text-fundo-aura py-12 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- Coluna 1: Logo -->
+            <div>
+                <h3 class="font-display text-3xl font-bold mb-4">Ateliê Aura</h3>
+                <p class="text-sm">Mais que moda, sua aura em cada peça.</p>
+            </div>
+
+            <!-- Coluna 2: Links Rápidos -->
+            <div>
+                <h4 class="font-semibold text-lg mb-4 text-detalhe-rosé">Links</h4>
+                <ul>
+                    <li><a href="#sobre" class="hover:text-detalhe-rosé transition-colors duration-200">Sobre a Marca</a></li>
+                    <li><a href="#colecao" class="hover:text-detalhe-rosé transition-colors duration-200">Coleção</a></li>
+                    <li><a href="#faq" class="hover:text-detalhe-rosé transition-colors duration-200">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- Coluna 3: Institucional -->
+            <div>
+                <h4 class="font-semibold text-lg mb-4 text-detalhe-rosé">Legal</h4>
+                <ul>
+                    <li><a href="#" class="hover:text-detalhe-rosé transition-colors duration-200">Política de Privacidade</a></li>
+                    <li><a href="#" class="hover:text-detalhe-rosé transition-colors duration-200">Termos de Uso</a></li>
+                </ul>
+            </div>
+
+            <!-- Coluna 4: Redes Sociais -->
+            <div>
+                <h4 class="font-semibold text-lg mb-4 text-detalhe-rosé">Siga-nos</h4>
+                <div class="flex space-x-4">
+                    <a href="#" aria-label="Instagram" class="hover:text-detalhe-rosé transition-colors duration-200">
+                        <i data-lucide="instagram" class="w-6 h-6"></i>
+                    </a>
+                    <a href="#" aria-label="YouTube" class="hover:text-detalhe-rosé transition-colors duration-200">
+                        <i data-lucide="youtube" class="w-6 h-6"></i>
+                    </a>
+                    <!-- Adicione mais ícones conforme necessário -->
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-detalhe-rosé/30 text-center text-sm">
+            <p>Copyright © Ateliê Aura. Todos os direitos reservados.</p>
+            <p class="mt-1 text-xs text-gray-400">Espaço reservado para Google Analytics e Pixel do Meta.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // Inicializa Lucide icons
+        lucide.createIcons();
+
+        // ------------------------------------
+        // 1. JS GERAL & ANIMAÇÕES
+        // ------------------------------------
+
+        // Efeito Fade-In (Animações sutis ao entrar na viewport)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.animate-fade-in').forEach(el => {
+            el.classList.add('opacity-0', 'translate-y-4', 'transition-all', 'duration-700', 'ease-out');
+            observer.observe(el);
+        });
+        
+        // Esconde loader após carregar
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        });
+
+        // ------------------------------------
+        // 2. NAVEGAÇÃO E SCROLL
+        // ------------------------------------
+
+        // Toggle do Menu Mobile
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Simulação do Contador Regressivo (Estático no HTML, mas com JS para efeito)
+        function updateCounter() {
+            // Este contador é meramente ilustrativo para simular urgência
+            let s = parseInt(document.getElementById('seconds').textContent);
+            s = (s - 1 + 60) % 60;
+            document.getElementById('seconds').textContent = s.toString().padStart(2, '0');
+        }
+        setInterval(updateCounter, 1000);
+
+
+        // ------------------------------------
+        // 3. CARROSSÉIS
+        // ------------------------------------
+
+        function setupCarousel(id, autoplay = false) {
+            const container = document.getElementById(id);
+            const items = container.querySelectorAll('.carousel-item');
+            const prevButton = document.getElementById(`prev-${id.split('-')[1]}`);
+            const nextButton = document.getElementById(`next-${id.split('-')[1]}`);
+            let currentIndex = 0;
+            let autoplayInterval;
+
+            if (items.length === 0) return;
+
+            const updateCarousel = (index) => {
+                // Calcula a largura de um item mais o padding para rolagem
+                const itemWidth = items[0].offsetWidth;
+                container.scrollLeft = itemWidth * index;
+                currentIndex = index;
+            };
+
+            const goToNext = () => {
+                let itemsPerView = 1;
+                if (window.innerWidth >= 1024) itemsPerView = 3; // lg breakpoint
+                else if (window.innerWidth >= 768) itemsPerView = 2; // md breakpoint
+
+                // Calcula o próximo índice. Se for o último, volta ao 0 (loop infinito simulado)
+                currentIndex = (currentIndex + 1) % items.length;
+                updateCarousel(currentIndex);
+            };
+
+            const goToPrev = () => {
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                updateCarousel(currentIndex);
+            };
+
+            prevButton.addEventListener('click', goToPrev);
+            nextButton.addEventListener('click', goToNext);
+
+            // Autoplay (apenas para o Carrossel 1)
+            if (autoplay) {
+                const startAutoplay = () => {
+                    autoplayInterval = setInterval(goToNext, 4000); // Rola a cada 4 segundos
+                };
+                
+                const stopAutoplay = () => {
+                    clearInterval(autoplayInterval);
+                };
+                
+                startAutoplay();
+                
+                // Pausa ao passar o mouse
+                container.addEventListener('mouseenter', stopAutoplay);
+                container.addEventListener('mouseleave', startAutoplay);
+            }
+        }
+
+        // Configura Carrossel 1 (Coleção) - Autoplay ON
+        setupCarousel('carousel-1', true);
+
+        // Configura Carrossel 2 (Galeria) - Autoplay OFF
+        setupCarousel('carousel-2', false);
+
+
+        // ------------------------------------
+        // 4. LIGHTBOX (Galeria)
+        // ------------------------------------
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const galleryItems = document.querySelectorAll('#carousel-2 .carousel-item');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imageUrl = item.getAttribute('data-img-url');
+                const altText = item.querySelector('p').textContent;
+
+                lightboxImg.src = imageUrl;
+                lightboxImg.alt = altText;
+                lightbox.style.display = 'flex';
+                lightbox.setAttribute('aria-hidden', 'false');
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+            lightbox.setAttribute('aria-hidden', 'true');
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+                lightbox.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        // ------------------------------------
+        // 5. FAQ (Accordion)
+        // ------------------------------------
+        document.querySelectorAll('.faq-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+                // Fecha todos os outros
+                document.querySelectorAll('.faq-button').forEach(otherButton => {
+                    if (otherButton !== button) {
+                        otherButton.setAttribute('aria-expanded', 'false');
+                        otherButton.nextElementSibling.style.maxHeight = '0';
+                        otherButton.querySelector('i').classList.remove('rotate-180');
+                    }
+                });
+
+                // Abre ou fecha o item clicado
+                if (!isExpanded) {
+                    button.setAttribute('aria-expanded', 'true');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.classList.add('rotate-180');
+                } else {
+                    button.setAttribute('aria-expanded', 'false');
+                    content.style.maxHeight = '0';
+                    icon.classList.remove('rotate-180');
+                }
+            });
+        });
+
+    </script>
+</body>
