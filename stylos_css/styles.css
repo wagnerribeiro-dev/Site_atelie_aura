@@ -70,7 +70,7 @@
             padding: 20px;
         }
         .logo-img{
-            height: 70px;
+            height: 160px;
             width: auto;
         }
         .header-container{
@@ -80,3 +80,16 @@
             padding: 10px 30px;
             background-color: #ffffff;
         }
+    @keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    }
+    .animate-fade-in {
+    animation: fadeIn 1.2s ease-out;
+    }
