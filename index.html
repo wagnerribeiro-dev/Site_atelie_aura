@@ -30,54 +30,54 @@
     </div>
 
     <!-- HEADER PREMIUM CENTRALIZADO -->
-<header class="fixed top-0 left-0 w-full bg-fundo-aura/90 backdrop-blur-md shadow-sm z-50">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    <header class="fixed top-0 left-0 w-full bg-fundo-aura/90 backdrop-blur-md shadow-sm z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
 
-    <!-- 🍃 MENU ESQUERDO -->
-    <nav class="hidden md:flex space-x-8 font-inter text-base text-texto-escuro font-medium">
-      <a href="#inicio" class="hover:text-detalhe-rosé transition-colors">Início</a>
-      <a href="#colecao" class="hover:text-detalhe-rosé transition-colors">Coleção</a>
-    </nav>
+        <!-- 🍃 MENU ESQUERDO -->
+        <nav class="hidden md:flex space-x-8 font-inter text-base text-texto-escuro font-medium">
+        <a href="#hero" class="hover:text-detalhe-rosé transition-colors">Início</a>
+        <a href="#colecao" class="hover:text-detalhe-rosé transition-colors">Coleção</a>
+        </nav>
 
-    <!-- 🩷 LOGO CENTRALIZADO -->
-    <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-2">
-      <img src="src\imagens\logo_loja.jpg
-      " alt="Ateliê Aura Logo" class="h-10 w-auto">
-      <span class="font-playfair text-2xl font-semibold text-detalhe-rosé tracking-wide">
-        ateliê aura
-      </span>
+        <!-- 🩷 LOGO CENTRALIZADO -->
+        <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+        <img 
+            src="src/imagens/logo_loja.jpg" 
+            alt="Logo Ateliê Aura" 
+            class="h-36 w-auto md:h-40 lg:h-44 drop-shadow-lg"
+        >
+        </div>
+
+        <!-- 🍃 MENU DIREITO -->
+        <nav class="hidden md:flex space-x-8 font-inter text-base text-texto-escuro font-medium">
+        <a href="#sobre" class="hover:text-detalhe-rosé transition-colors">Sobre</a>
+        <a href="#contato" class="hover:text-detalhe-rosé transition-colors">Contato</a>
+        </nav>
+
+        <!-- 📱 MENU MOBILE (Botão) -->
+        <button id="menu-btn" class="md:hidden text-texto-escuro hover:text-detalhe-rosé transition">
+        <i data-lucide="menu" class="w-7 h-7"></i>
+        </button>
     </div>
 
-    <!-- 🍃 MENU DIREITO -->
-    <nav class="hidden md:flex space-x-8 font-inter text-base text-texto-escuro font-medium">
-      <a href="#sobre" class="hover:text-detalhe-rosé transition-colors">Sobre</a>
-      <a href="#contato" class="hover:text-detalhe-rosé transition-colors">Contato</a>
+    <!-- 📱 MENU MOBILE (Itens) -->
+    <nav id="mobile-menu" class="hidden flex-col items-center bg-fundo-aura border-t border-detalhe-rosé/30 py-4 space-y-4 md:hidden">
+        <a href="#hero" class="hover:text-detalhe-rosé transition-colors">Início</a>
+        <a href="#colecao" class="hover:text-detalhe-rosé transition-colors">Coleção</a>
+        <a href="#sobre" class="hover:text-detalhe-rosé transition-colors">Sobre</a>
+        <a href="#contato" class="hover:text-detalhe-rosé transition-colors">Contato</a>
     </nav>
+    </header>
 
-    <!-- 📱 MENU MOBILE (Botão) -->
-    <button id="menu-btn" class="md:hidden text-texto-escuro hover:text-detalhe-rosé transition">
-      <i data-lucide="menu" class="w-7 h-7"></i>
-    </button>
-  </div>
-
-  <!-- 📱 MENU MOBILE (Itens) -->
-  <nav id="mobile-menu" class="hidden flex-col items-center bg-fundo-aura border-t border-detalhe-rosé/30 py-4 space-y-4 md:hidden">
-    <a href="#inicio" class="hover:text-detalhe-rosé transition-colors">Início</a>
-    <a href="#colecao" class="hover:text-detalhe-rosé transition-colors">Coleção</a>
-    <a href="#sobre" class="hover:text-detalhe-rosé transition-colors">Sobre</a>
-    <a href="#contato" class="hover:text-detalhe-rosé transition-colors">Contato</a>
-  </nav>
-</header>
 
     <main>
 
     <!--  HERO COM IMAGEM DE FUNDO -->
-    <section id="hero" class="relative flex items-center justify-center text-center overflow-hidden min-h-[90vh]">
-    
+<section id="hero" class="relative flex items-center justify-center text-center overflow-hidden min-h-[90vh]">
 
     <!-- 🖼️ IMAGEM DE FUNDO -->
     <div class="absolute inset-0">
-        <img src="src\imagens\logo_fundo.jpg" 
+        <img src="src/imagens/logo_fundo.jpg" 
             alt="Loja Ateliê Aura - Moda Feminina"
             class="w-full h-full object-cover brightness-90 contrast-105">
     </div>
@@ -86,25 +86,28 @@
     <div class="absolute inset-0 bg-gradient-to-b from-fundo-aura/80 via-fundo-aura/60 to-fundo-aura/30"></div>
 
     <!-- ✨ CONTEÚDO PRINCIPAL -->
-    <div class="relative z-10 p-8 md:p-12 text-texto-escuro animate-fade-in">
+    <div class="relative z-10 p-8 md:p-12 text-texto-escuro animate-fade-in flex flex-col items-center">
         
-        
+        <!-- 🔳 FUNDO TRANSLÚCIDO PARA CONTRASTE -->
+        <div class="bg-fundo-aura/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 max-w-2xl text-center shadow-2xl">
+            
+            <!-- SLOGAN -->
+            <h1 class="font-display text-4xl md:text-6xl font-light italic mb-8 leading-tight">
+                Mais que moda, <span class="font-bold text-detalhe-rosé">sua aura em cada peça.</span>
+            </h1>
 
-        <!-- SLOGAN -->
-        <h1 class="font-display text-4xl md:text-6xl font-light italic mb-8 max-w-2xl mx-auto leading-tight">
-        Mais que moda, <span class="font-bold text-detalhe-rosé">sua aura em cada peça.</span>
-        </h1>
-
-        <!-- BOTÃO CTA -->
-        <a href="#comprar" 
-        class="inline-block bg-texto-escuro text-fundo-aura px-10 py-4 text-xl font-bold rounded-full transition-all duration-300 hover:scale-[1.05] hover:bg-detalhe-rosé hover:text-texto-escuro shadow-xl">
-        Garanta a Sua
-        </a>
+            <!-- BOTÃO CTA -->
+            <a href="#comprar" 
+                class="inline-block bg-texto-escuro text-fundo-aura px-10 py-4 text-xl font-bold rounded-full transition-all duration-300 hover:scale-[1.05] hover:bg-detalhe-rosé hover:text-texto-escuro shadow-xl">
+                Garanta a Sua
+            </a>
+        </div>
     </div>
 
     <!--  TRANSIÇÃO SUAVE PARA A PRÓXIMA SEÇÃO -->
     <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-b from-transparent to-fundo-aura"></div>
-    </section>
+</section>
+
 
 
         <!--  Seção Sobre a Marca — Versão Glassmorphism -->
@@ -148,7 +151,7 @@
 
 
         <!-- Seção Coleção (Carrossel 1 – Estilo Catálogo de Moda) -->
-        <section id="colecao" class="py-16 md:py-24 bg-detalhe-rosé/30">
+        <section id="colecao" class="py-20 bg-fundo-aura">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-12">
             Coleção Outono & Inverno: Conforto em Movimento
@@ -500,53 +503,64 @@
     </a>
 
     <!-- 🔗 Rodapé -->
-    <footer class="bg-texto-escuro text-fundo-aura py-12 px-4 sm:px-6 lg:px-8">
-        <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-            <!-- Coluna 1: Logo -->
-            <div>
-                <h3 class="font-display text-3xl font-bold mb-4">Ateliê Aura</h3>
-                <p class="text-sm">Mais que moda, sua aura em cada peça.</p>
-            </div>
-
-            <!-- Coluna 2: Links Rápidos -->
-            <div>
-                <h4 class="font-semibold text-lg mb-4 text-detalhe-rosé">Links</h4>
-                <ul>
-                    <li><a href="#sobre" class="hover:text-detalhe-rosé transition-colors duration-200">Sobre a Marca</a></li>
-                    <li><a href="#colecao" class="hover:text-detalhe-rosé transition-colors duration-200">Coleção</a></li>
-                    <li><a href="#faq" class="hover:text-detalhe-rosé transition-colors duration-200">FAQ</a></li>
-                </ul>
-            </div>
-
-            <!-- Coluna 3: Institucional -->
-            <div>
-                <h4 class="font-semibold text-lg mb-4 text-detalhe-rosé">Legal</h4>
-                <ul>
-                    <li><a href="#" class="hover:text-detalhe-rosé transition-colors duration-200">Política de Privacidade</a></li>
-                    <li><a href="#" class="hover:text-detalhe-rosé transition-colors duration-200">Termos de Uso</a></li>
-                </ul>
-            </div>
-
-            <!-- Coluna 4: Redes Sociais -->
-            <div>
-                <h4 class="font-semibold text-lg mb-4 text-detalhe-rosé">Siga-nos</h4>
-                <div class="flex space-x-4">
-                    <a href="#" aria-label="Instagram" class="hover:text-detalhe-rosé transition-colors duration-200">
-                        <i data-lucide="instagram" class="w-6 h-6"></i>
-                    </a>
-                    <a href="#" aria-label="YouTube" class="hover:text-detalhe-rosé transition-colors duration-200">
-                        <i data-lucide="youtube" class="w-6 h-6"></i>
-                    </a>
-                    <!-- Adicione mais ícones conforme necessário -->
-                </div>
-            </div>
+<footer class="bg-texto-escuro text-fundo-aura py-16 px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+        <!-- Coluna 1: Logo -->
+        <div>
+            <img src="src/imagens/logo_loja.jpg" alt="Logo Ateliê Aura" class="mt-4 w-24 h-auto">
+            <p class="text-sm">Mais que moda, sua aura em cada peça.</p>
         </div>
 
-        <div class="mt-8 pt-6 border-t border-detalhe-rosé/30 text-center text-sm">
-            <p>Copyright © Ateliê Aura. Todos os direitos reservados.</p>
-            <p class="mt-1 text-xs text-gray-400">Espaço reservado para Google Analytics e Pixel do Meta.</p>
+        <!-- Coluna 2: Links Rápidos -->
+        <div>
+            <h4 class="font-semibold text-lg mb-4 text-detalhe-rosé">Links</h4>
+            <ul>
+                <li><a href="#sobre" class="hover:text-detalhe-rosé transition-colors duration-200">Sobre a Marca</a></li>
+                <li><a href="#colecao" class="hover:text-detalhe-rosé transition-colors duration-200">Coleção</a></li>
+                <li><a href="#faq" class="hover:text-detalhe-rosé transition-colors duration-200">FAQ</a></li>
+            </ul>
         </div>
-    </footer>
+
+        <!-- Coluna 3: Institucional -->
+        <div>
+            <h4 class="font-semibold text-lg mb-4 text-detalhe-rosé">Legal</h4>
+            <ul>
+                <li><a href="#" class="hover:text-detalhe-rosé transition-colors duration-200">Política de Privacidade</a></li>
+                <li><a href="#" class="hover:text-detalhe-rosé transition-colors duration-200">Termos de Uso</a></li>
+            </ul>
+        </div>
+
+        <!-- Coluna 4: Contato e Redes Sociais -->
+        <div>
+            <h4 class="font-semibold text-lg mb-4 text-detalhe-rosé">Contato</h4>
+
+            <!-- ☎️ Telefone -->
+            <div class="flex items-center space-x-2 mb-4">
+                <i data-lucide="phone" class="w-5 h-5 text-detalhe-rosé"></i>
+                <a id="contato" class="hover:text-detalhe-rosé transition-colors duration-200">
+                    (00) 00000-0000
+                </a>
+            </div>
+
+            <!-- 🌐 Redes Sociais -->
+            <h5 class="font-semibold text-sm mb-2 text-detalhe-rosé">Siga-nos</h5>
+            <div class="flex space-x-4">
+                <a href="#" aria-label="Instagram" class="hover:text-detalhe-rosé transition-colors duration-200">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+                <a href="#" aria-label="YouTube" class="hover:text-detalhe-rosé transition-colors duration-200">
+                    <i data-lucide="youtube" class="w-6 h-6"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-8 pt-6 border-t border-detalhe-rosé/30 text-center text-sm">
+        <p>Copyright © Ateliê Aura. Todos os direitos reservados.</p>
+        <p class="mt-1 text-xs text-gray-400">Espaço reservado para Google Analytics e Pixel do Meta.</p>
+    </div>
+</footer>
+
 
 
     <script src="js/scripts.js"> </script>
