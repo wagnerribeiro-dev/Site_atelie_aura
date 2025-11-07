@@ -179,10 +179,17 @@
             });
         });
         //menu principal fixo ao rolar a pagina
-            lucide.createIcons();
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+        window.addEventListener('scroll', () => {
+    const header = document.getElementById('main-header');
+    const logo = document.getElementById('logo-img');
 
-    menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+    if (window.scrollY > 80) {
+        // Aplica fundo mais escuro e logo branca translúcida
+        header.classList.add('bg-fundo-aura/95', 'shadow-md');
+        logo.src = 'src/imagens/logo_loja_branco.png'; // 🔁 versão branca do logo
+    } else {
+        // Volta ao original
+        header.classList.remove('bg-fundo-aura/95', 'shadow-md');
+        logo.src = 'src/imagens/logo_loja.jpg'; // 🌸 versão original
+    }
     });
