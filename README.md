@@ -5,7 +5,7 @@
 [![Made with](https://img.shields.io/badge/made%20with-HTML5%2C%20CSS3%2C%20JS-orange)]()
 [![Deploy](https://img.shields.io/badge/deploy-GitHub%20Pages-lightgrey)](https://wagnerribeiro-dev.github.io/Site_atelie_aura/)
 
-> **Landing Page elegante e responsiva** desenvolvida para o *Ateliê Aura*, marca fictícia de moda feminina criada para a Feira de Carreiras 2025.  
+> **Landing Page elegante e responsiva** desenvolvida para o *Ateliê Aura*, marca fictícia de moda feminina criada para a III Expo Carreiras 2025.  
 > Este projeto demonstra boas práticas de design, organização e experiência do usuário.
 
 ---
@@ -13,7 +13,7 @@
 ## 📸 Prévia
 
 <p align="center">
-  <img src="logo_loja.jpg" alt="Logo Ateliê Aura" width="200">
+  <img src="src\imagens\logo_loja.jpg" alt="Logo Ateliê Aura" width="200">
 </p>
 
 > 🌐 Visualize online: [Clique aqui para acessar o site](https://wagnerribeiro-dev.github.io/Site_atelie_aura/)
